@@ -1,6 +1,6 @@
 # This file contains code to change file name of TV Shows as per the standard of Plex
 
-import os
+import os,sys,stat
 
 def change_file_name():
     pass
@@ -12,18 +12,19 @@ def read_files(path_dire):
         list_file,dir_list,path_list=[],[],[]
         path_lst =[r[0] for r in os.walk(path_dire) if len(r[0].split('/'))==6]
         print(path_lst)
-        t= path_lst[1]
+        t= path_lst[-1]
+        print(t)
         #for t in path_list[:-1]:
         #\[(.*?)\]
         for path,dir_name,f_name in os.walk(t):
-            for f_names in os.listdir(path):
-                if not f_names.startswith('Friends'):
-                    os.rename(f_names,'Friends '+f_names)
-
-            for t in f_name:
-                list_file.append(t)
-            dir_list.append(dir_name)
-            path_list.append(path)
+             for f_names in os.listdir(path):
+                  new_name=change_file_Friends(f_names)
+                  #os.chmod(path+'/'+f_names,0o777)
+                  os.rename(path+'/'+f_names,path+'/'+new_name)
+             for t in f_name:
+                  list_file.append(t)
+             dir_list.append(dir_name)
+             path_list.append(path)
         return list_file,dir_list,path_list
 
 '''
