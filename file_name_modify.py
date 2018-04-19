@@ -15,16 +15,24 @@ def read_files(path_dire):
         t= path_lst[-1] # Castle
         t=path_lst[1] #Friends
         t= path_lst[5] #24 Hours
+        t=path_lst[8]
         print(t)
         #for t in path_list[:-1]:
         #\[(.*?)\]
         for path,dir_name,f_name in os.walk(t):
              for f_names in os.listdir(path):
-                  new_name=change_file_Friends(f_names)
-                  #os.chmod(path+'/'+f_names,0o777)
-                  os.rename(path+'/'+f_names,path+'/'+new_name)
-             for t in f_name:
-                  list_file.append(t)
+                  #new_name=change_file_Friends(f_names)
+                  if parse_file_name(f_names)!=0:
+                      existname=parse_file_name(f_names)
+                      new_name=change_file_name(showname=existname[0],seas_num=existname[1],epis_num=existname[2],extn=existname[3])
+                      #path,path2,new_name=change_path(path)
+                      os.rename(path+'/'+f_names,path+'/'+new_name)
+                  elif "Agent" in t:
+                      path, path2,new_name = change_path(path)
+                      if path!=path2:
+                         os.rename(path + '/' + f_names, path2 + '/' + new_name+'.'+f_names.split('.')[-1])
+             for tk in f_name:
+                  list_file.append(tk)
              dir_list.append(dir_name)
              path_list.append(path)
         return list_file,dir_list,path_list
