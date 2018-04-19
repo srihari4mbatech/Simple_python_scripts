@@ -12,7 +12,9 @@ def read_files(path_dire):
         list_file,dir_list,path_list=[],[],[]
         path_lst =[r[0] for r in os.walk(path_dire) if len(r[0].split('/'))==6]
         print(path_lst)
-        t= path_lst[-1]
+        t= path_lst[-1] # Castle
+        t=path_lst[1] #Friends
+        t= path_lst[5] #24 Hours
         print(t)
         #for t in path_list[:-1]:
         #\[(.*?)\]
