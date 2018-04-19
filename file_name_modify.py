@@ -2,8 +2,50 @@
 
 import os,sys,stat
 
-def change_file_name():
+def change_file_name(**kwargs):
+    import re
+    show_name = kwargs['showname']
+    season_num=kwargs['seas_num']
+    epiosde_num= kwargs['epis_num']
+    ext=kwargs['extn']
+    return show_name+" - "+season_num+epiosde_num+ext
+
+def change_file_Friends(F_name):
+    '''
+    Friends - [3x01] - The One with the Princess Leia Fantasy
+    Friends S1E01] - The One Where Monica Gets A Roommate
+    '''
+    new_F_name=F_name.replace('[','S').replace(']','') if '[' in F_name else F_name.replace('- ','S')
+    new_F_name=new_F_name.replace('x','E')
+    #new_F_name=new_F_name.replace(']','')
+    return new_F_name
+
+def change_file_name24_s9(f_name):
+    new_name='24 - S09'+f_name
+    return new_name
+
+def existing_file_name(path_file):
     pass
+
+def parse_file_name(name_file):
+    # for 24hours season09
+    if "Season 09"  in name_file and ('mp4' in name_file or '.avi' in name_file):
+        showname="24"
+        season_name= "S09"
+        Episode_num='E'+str(name_file.split('-')[2]).strip().replace('mp4','')
+        ext='.mp4'
+        return showname,season_name,Episode_num,ext
+    else:
+        return 0
+
+def change_path(path):
+    if 'Season' in path.split('/')[-2]:
+       path2='/'.join(path.split('/')[:-1])
+       #new_name='Agents Of S.H.I.E.L.D - '+change_file_Friends(path.split('/')[-1])
+       new_name = 'Sherlock Homes - ' + change_file_Friends(path.split('/')[-1])
+       return path,path2,new_name
+    else:
+        return path,path,""
 
 def read_files(path_dire):
     if not isinstance(path_dire,str):
