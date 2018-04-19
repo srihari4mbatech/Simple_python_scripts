@@ -10,9 +10,17 @@ def read_files(path_dire):
         return 0
     else:
         list_file=[]
-        for t in os.listdir(path_dire):
-            list_file.append(t)
+        for path,dir_name,f_name in os.walk(path_dire):
+            for t in f_name:
+                list_file.append(t)
         return list_file
+
+'''
+Required format for plex is 
+TV Show/
+        Season 01/
+                 Show-S01E01.mpt4
+'''
 
 if __name__== "__main__":
     dir_loc='/Volumes/Public/Shared Videos/TV Shows'
