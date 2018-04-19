@@ -15,7 +15,9 @@ def read_files(path_dire):
         t= path_lst[-1] # Castle
         t=path_lst[1] #Friends
         t= path_lst[5] #24 Hours
-        t=path_lst[8]
+        t=path_lst[8]# Agent of shield
+        t=path_lst[0]#Arrow
+        t=path_lst[2]#sherlock homes
         print(t)
         #for t in path_list[:-1]:
         #\[(.*?)\]
@@ -27,7 +29,7 @@ def read_files(path_dire):
                       new_name=change_file_name(showname=existname[0],seas_num=existname[1],epis_num=existname[2],extn=existname[3])
                       #path,path2,new_name=change_path(path)
                       os.rename(path+'/'+f_names,path+'/'+new_name)
-                  elif "Agent" in t:
+                  elif "sherlock" in t:
                       path, path2,new_name = change_path(path)
                       if path!=path2:
                          os.rename(path + '/' + f_names, path2 + '/' + new_name+'.'+f_names.split('.')[-1])
