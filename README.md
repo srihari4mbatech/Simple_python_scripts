@@ -4,3 +4,5 @@ First script is written to update my files on Mycloud NAS system- file formats; 
 
 
 _This script I used to update my TV Shows files._
+
+_SQl Script to clean and generate retention of customer._
