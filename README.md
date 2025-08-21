@@ -52,3 +52,4 @@ Properietary Data issue has been resolved:
 - Combining reasoning with actions [Agentic AI]
 - Any person activity can be converted to Agentic AI.
 - Application has to register the tools with LLM, then LLM will decide the tool.
+- RAG is independent of LLM and heavily dependent on Embeddings and index Search.
